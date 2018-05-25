@@ -1,7 +1,8 @@
-FROM ubuntu:16.04
-LABEL Description="LAMP stack, based on Ubuntu 16.04 LTS. php 7.0 apache2 mariaDB 10" \
+FROM ubuntu:18.04
+MAINTAINER Cedric Francoys <cedricfrancoys@gmail.com>
+LABEL Description="LAMP stack, based on Ubuntu 18.04 LTS. php-7.2 apache2 mariaDB-10" \
         License="Apache License 2.0" \
-        Usage="docker run -d -p [HOST WWW PORT NUMBER]:80 -p [HOST DB PORT NUMBER]:3306 -v [HOST WWW DOCUMENT ROOT]:/var/www/html -v [HOST DB DOCUMENT ROOT]:/var/lib/mysql fauria/lamp" \
+        Usage="docker run -d -p [HOST WWW PORT NUMBER]:80 -p [HOST DB PORT NUMBER]:3306 -v [HOST WWW DOCUMENT ROOT]:/var/www/html -v [HOST DB DOCUMENT ROOT]:/var/lib/mysql docked_lamp" \
         Version="1.0"
 
 ARG mysql_uid
@@ -20,33 +21,33 @@ RUN set -ex; \
 	apt-get install -y --no-install-recommends \
 		libjpeg-dev \
 		libpng-dev \
-		php7.0 \
-		php7.0-bz2 \
-		php7.0-cgi \
-		php7.0-cli \
-		php7.0-common \
-		php7.0-curl \
-		php7.0-dev \
-		php7.0-gd \
-		php7.0-gmp \
-		php7.0-intl \
-		php7.0-json \
-		php7.0-mbstring \
-		php7.0-mcrypt \
-		php7.0-mysql \
-		php7.0-opcache \
-		php7.0-phpdbg \
-		php7.0-pspell \
-		php7.0-readline \
-		php7.0-sqlite3 \
-		php7.0-xsl \
-		php7.0-zip; \
+		php \
+		php-bz2 \
+		php-cgi \
+		php-cli \
+		php-common \
+		php-curl \
+		php-dev \
+		php-gd \
+		php-gmp \
+		php-intl \
+		php-json \
+		php-mbstring \
+		php-mcrypt \
+		php-mysql \
+		php-opcache \
+		php-phpdbg \
+		php-pspell \
+		php-readline \
+		php-sqlite3 \
+		php-xsl \
+		php-zip; \
 	configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*
 
 
-RUN apt-get install -y apache2 libapache2-mod-php7.0 mariadb-common mariadb-server mariadb-client postfix
+RUN apt-get install -y apache2 libapache2-mod-php mariadb-common mariadb-server mariadb-client postfix
 
 
 # set recommended PHP.ini settings

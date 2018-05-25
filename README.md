@@ -9,11 +9,11 @@ This configuration builds a Docker image with LAMP stack. Includes Postfix servi
 
 Includes the following components:
 
- * Ubuntu 16.04 LTS Xenial Xerus base image.
+ * Ubuntu 18.04 LTS Bionic Beaver base image.
  * Apache HTTP Server 2.4
  * MariaDB 10.0
  * Postfix 2.11
- * PHP 7
+ * PHP 7.2
  * PHP modules
  	* php-bz2
 	* php-cgi
@@ -57,14 +57,6 @@ Includes the following components:
 	* ftp
 	* curl
 
-Installation from [Docker registry hub](https://registry.hub.docker.com/u/fauria/lamp/).
-----
-
-You can download the image using the following command:
-
-```bash
-docker pull fauria/lamp
-```
 
 Environment variables
 ----
@@ -123,9 +115,6 @@ The image exposes ports `80` and `3306`, and exports four volumes:
 * `/var/lib/mysql`, where MariaDB data files are stores.
 
 
-The user and group owner id for the DocumentRoot directory `/var/www/html` are both 33 (`uid=33(www-data) gid=33(www-data) groups=33(www-data)`).
-
-The user and group owner id for the MariaDB directory `/var/log/mysql` are 105 and 108 repectively (`uid=105(mysql) gid=108(mysql) groups=108(mysql)`).
 
 Use cases
 ----
